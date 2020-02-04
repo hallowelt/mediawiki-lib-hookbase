@@ -1,0 +1,38 @@
+{
+    "name": "hallowelt/mediawiki-lib-hookbase",
+    "description": "A class library to ease MediaWiki hook handler implemenation",
+    "type": "library",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "rvogel",
+            "email": "vogel@hallowelt.biz"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "1.0.0",
+        "jakub-onderka/php-console-highlighter": "0.4.0",
+        "mediawiki/mediawiki-codesniffer": "29.0.0",
+        "mediawiki/minus-x": "1.0.0"
+    },
+    "autoload": {
+		"files" : [
+			"bootstrap.php"
+		],
+		"psr-4": {
+			"HalloWelt\\MediaWiki\\Lib\\HookBase\\": "src/"
+		}
+    },
+    "scripts": {
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check .",
+			"phpcs -sp"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		]
+	}
+}
